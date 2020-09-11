@@ -1,1 +1,11 @@
 buildPack: go
+pipelineConfig:
+  pipelines:
+    overrides:
+      - name: jx-preview
+        step:
+          #sh: sleep 100000
+          sh: jx preview create --app $APP_NAME --debug
+          dir: /workspace/source
+          name: jx-preview
+          image: gcr.io/jenkinsxio/jx-preview:0.0.0-SNAPSHOT-PR-46-1 
